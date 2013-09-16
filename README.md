@@ -12,7 +12,15 @@ Directory Structure
 Getting Started
 --
 
-The application is ready to run like this:
+To get started, clone this repository and install dependencies:
+
+```
+git clone https://github.com/asaarinen/nox-app-template.git
+cd nox-app-template
+npm install .
+```
+
+Now the application is ready to be run like this:
 
 ```
 node ./nox-appserver.js [<port>]
