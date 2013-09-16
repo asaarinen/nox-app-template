@@ -6,33 +6,43 @@ This project is an easy and simple template for getting a Nox.js app up and runn
 Directory Structure
 --
 
-`html` - includes all static files
-`lib` - includes all client and server JavaScript modules
+`html` - includes all static template files
+`app` - includes all application html files
+`lib` - includes all application client and server JavaScript modules
 
 Getting Started
 --
 
-To get started, clone this repository and install dependencies:
+To get started, install via npm:
 
 ```
-git clone https://github.com/asaarinen/nox-app-template.git
-cd nox-app-template
-npm install .
+npm install nox-app-template
 ```
 
 Now the application is ready to be run like this:
 
 ```
-node ./nox-appserver.js [<port>]
+node nox-start.js [<port>]
 ```
 
 After this, you can go to `localhost:<port>/login.html` and login using credentials `username` and `usernamepass`.
 
-To add modules and pages to your project, please modify `nox-appserver.js` where the pages are added to the app (around line 32):
+To play around and add modules and pages to your project, please modify `nox-start.js` where the pages are added to the app:
 
 ```javascript
 noxapp.page('/login.html', [ './lib/auth.js' ], [ './lib/login.js' ]);
 noxapp.page('/index.html', [ './lib/auth.js', './lib/app.js' ], [ './lib/index.js' ]);
+```
+
+You can also create a new app in your own project similarly as it is done in `nox-start.js`:
+
+```javascript
+var noxapp = require('nox-app-template')('appname', 8080);
+
+// ... add pages etc.
+
+// remember to serve your application-specific html files
+noxapp.expressServer.use(express.static('app')); 
 ```
 
 3rd Party Software
