@@ -1,0 +1,17 @@
+{
+  "name": "nox-app-template",
+  "version": "0.1.0",
+  "description": "Nox application template",
+  "main": "./nox-appserver.js",
+  "author": "Antti Saarinen <antti.p.saarinen@gmail.com>",
+  "repository": {
+     "type": "git",
+     "url": "https://github.com/asaarinen/nox-app-template.git"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "async": "~0.2.9",
+    "nox": "~0.1.0",
+    "express": "~3.3.4"    
+  }
+}
