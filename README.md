@@ -42,7 +42,7 @@ var noxapp = require('nox-app-template')('appname', 8080);
 // ... add pages etc.
 
 // remember to serve your application-specific html files
-noxapp.expressServer.use(express.static('app')); 
+noxapp.expressServer.use(express.static('html')); 
 ```
 
 3rd Party Software
