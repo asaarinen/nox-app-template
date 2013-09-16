@@ -1,8 +1,12 @@
+var express = require('express');
+
 var app = require('./nox-appserver.js')('template', 'html', process.argv[2]);
 
-app.noxapp.page('/login.html', [ './lib/auth.js' ], [ './lib/login.js' ]);
-app.noxapp.page('/index.html', [ './lib/auth.js', './lib/app.js' ], 
+app.noxApp.page('/login.html', [ './lib/auth.js' ], [ './lib/login.js' ]);
+app.noxApp.page('/index.html', [ './lib/auth.js', './lib/app.js' ], 
 		[ './lib/index.js' ]);
+
+app.expressServer.use('/', express.static('app'));
 
 
 

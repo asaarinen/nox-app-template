@@ -17,7 +17,7 @@ module.exports = function(appname, htmldir, port) {
     }));
 
     expressServer.use(expressServer.router);
-    expressServer.use('/', express.static(htmldir));
+    expressServer.use('/', express.static(__dirname + '/html'));
     
     var noxapp = require('nox').nox(
 	function(str) { return require(str); },
@@ -47,8 +47,9 @@ module.exports = function(appname, htmldir, port) {
     log('listening at ' + port);
 
     return {
-	noxapp: noxapp,
-	server: httpServer
+	noxApp: noxapp,
+	expressServer: expressServer,
+	httpServer: httpServer
     }
 }
 
