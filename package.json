@@ -8,6 +8,9 @@
      "type": "git",
      "url": "https://github.com/asaarinen/nox-app-template.git"
   },
+  "scripts": {
+     "start": "node nox-start.js"
+  },
   "readmeFilename": "README.md",
   "dependencies": {
     "async": "~0.2.9",
