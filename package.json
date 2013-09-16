@@ -1,6 +1,6 @@
 {
   "name": "nox-app-template",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Nox.js application template",
   "main": "./nox-appserver.js",
   "author": "Antti Saarinen <antti.p.saarinen@gmail.com>",

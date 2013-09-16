@@ -17,33 +17,22 @@ module.exports = function(appname, requirefun, logfun) {
 	cookie: { path: '/', httpOnly: true, maxAge: 100000000 }
     }));
 
-    var usedFuns = [];
-    expressServer.use(function(req, res, next) {
-	async.eachSeries(usedFuns, function(fun, funcb) {
-	    fun(req, res, function(err) {
-		funcb(err);
-	    });
-	}, next);
-    });
-
-    expressServer.use(expressServer.router);
-    expressServer.use('/', express.static(__dirname + '/html'));
-    
     var noxapp = require('nox').nox(
 	requirefun,
 	'nox-app-' + appname + '.sid', 
 	logfun);
     
-    expressServer.get('/js/nox-client.js', noxapp.get);
+    expressServer.use(function(req, res, next) {
+	if( req.url == '/js/nox-client.js' )
+	    noxapp.get(req, res);
+	else
+	    next();
+    });
     
     var socketServer = require('socket.io').listen(httpServer);
     socketServer.set('authorization', noxapp.socketAuth);
     socketServer.on('connection', noxapp.socketConn);
     
-    expressServer.useBefore = function(fun) {
-	usedFuns.push(fun);
-    }
-
     return {
 	noxApp: noxapp,
 	expressServer: expressServer,
