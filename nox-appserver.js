@@ -1,4 +1,4 @@
-exports.createApp = function(appname, port) {
+module.exports = function(appname, htmldir, port) {
     
     var http = require('http');
     var express = require('express');
@@ -17,7 +17,7 @@ exports.createApp = function(appname, port) {
     }));
 
     expressServer.use(expressServer.router);
-    expressServer.use('/', express.static('html'));
+    expressServer.use('/', express.static(htmldir));
     
     var noxapp = require('nox').nox(
 	function(str) { return require(str); },
@@ -30,10 +30,6 @@ exports.createApp = function(appname, port) {
     socketServer.set('authorization', noxapp.socketAuth);
     socketServer.on('connection', noxapp.socketConn);
     
-    noxapp.page('/login.html', [ './lib/auth.js' ], [ './lib/login.js' ]);
-    noxapp.page('/index.html', [ './lib/auth.js', './lib/app.js' ], 
-		[ './lib/index.js' ]);
-
     if( typeof port != 'number' )
 	port = 8080;
     
