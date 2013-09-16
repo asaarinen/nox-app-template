@@ -48,7 +48,7 @@ module.exports = function(appname, htmldir, port) {
 
     return {
 	noxapp: noxapp,
-	server: server
+	server: httpServer
     }
 }
 
