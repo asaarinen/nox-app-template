@@ -1,4 +1,4 @@
-Nox Application Template
+Nox.js Application Template
 ===
 
 This project is an easy and simple template for getting a Nox.js app up and running in Node.js. It includes login and main pages to start building upon.
