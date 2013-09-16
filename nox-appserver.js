@@ -1,4 +1,4 @@
-module.exports = function(appname, htmldir, port) {
+module.exports = function(appname, port) {
     
     var http = require('http');
     var express = require('express');
